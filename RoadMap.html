@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Engineer Roadmap — Structured 6-Month Learning Path</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#0b1020;--panel:#121a2b;--panel2:#0f1727;--line:#23304a;
+      --text:#e8edf7;--muted:#91a0b8;--soft:#c7d2e5;--accent:#7c8cff;
+      --green:#39d98a;--orange:#ffb454;--blue:#5fb3ff;--pink:#c58bff;
+    }
+    body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at top,#111a33 0,#0b1020 45%,#070b16 100%);color:var(--text);min-height:100vh}
+    button{font:inherit}
+    .wrap{max-width:1180px;margin:auto;padding:26px 18px 60px}
+    .hero{display:grid;grid-template-columns:1.35fr .65fr;gap:18px;align-items:stretch}
+    .hero-card,.side-card,.panel{background:rgba(18,26,43,.88);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 60px rgba(0,0,0,.18)}
+    .hero-card{padding:30px}
+    .eyebrow{display:inline-flex;padding:6px 11px;border:1px solid #33436a;border-radius:999px;color:#9eabff;font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
+    h1{font-size:clamp(30px,5vw,54px);line-height:1.02;margin:18px 0 12px;letter-spacing:-1.5px}
+    .hero p{color:var(--muted);line-height:1.65;max-width:720px}
+    .hero-points{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+    .hero-point{padding:13px;border:1px solid var(--line);background:#0f1726;border-radius:12px}
+    .hero-point b{display:block;font-size:13px;margin-bottom:5px}.hero-point span{font-size:11px;color:var(--muted);line-height:1.45}
+    .side-card{padding:20px}
+    .side-card h3{font-size:14px;margin-bottom:14px}
+    .route{display:grid;gap:9px}
+    .route-row{display:grid;grid-template-columns:58px 1fr;gap:10px;align-items:center}
+    .route-badge{font-size:10px;font-weight:800;color:#cbd5e1;padding:5px 7px;border-radius:8px;background:#1b263c;text-align:center}
+    .route-name{font-size:12px;font-weight:700}.route-sub{font-size:10px;color:var(--muted);margin-top:2px}
+    .section-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 0 12px}
+    .section-title h2{font-size:20px}.section-title span{font-size:11px;color:var(--muted)}
+    .principles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .principle{padding:15px;border-radius:14px;border:1px solid var(--line);background:rgba(15,23,39,.78)}
+    .principle b{font-size:12px;display:block;margin-bottom:6px}.principle p{font-size:11px;color:var(--muted);line-height:1.5}
+    .tabs{display:flex;gap:8px;overflow:auto;padding-bottom:4px}
+    .month-btn{flex:0 0 auto;border:1px solid var(--line);background:#0f1726;color:var(--muted);padding:10px 14px;border-radius:10px;cursor:pointer}
+    .month-btn.active{border-color:var(--accent);color:#fff;background:#1a2240}
+    .panel{margin-top:12px;padding:20px}
+    .month-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line)}
+    .month-kicker{font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent)}
+    .month-head h2{font-size:26px;margin:5px 0}.month-head p{color:var(--muted);font-size:12px;line-height:1.55}
+    .badge-goal{padding:7px 10px;border-radius:9px;background:#17203a;border:1px solid #2b3960;font-size:11px;color:#c7d2fe;font-weight:800}
+    .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:18px}
+    .box{border:1px solid var(--line);background:#0e1625;border-radius:14px;padding:15px}
+    .box h3{font-size:13px;margin-bottom:12px}.box h4{font-size:11px;color:#aebbd0;text-transform:uppercase;letter-spacing:.8px;margin:11px 0 7px}
+    .week{border:1px solid #202c45;border-radius:12px;padding:12px;margin-bottom:9px;background:#10192a}
+    .week:last-child{margin-bottom:0}
+    .week-top{display:flex;gap:10px;align-items:flex-start}
+    .week-num{width:26px;height:26px;border-radius:8px;background:#202b49;display:grid;place-items:center;font-size:11px;font-weight:800;flex:0 0 auto}
+    .week-title{font-size:12px;font-weight:800}.week-outcome{font-size:10px;color:var(--muted);margin-top:3px}
+    .tasks{display:grid;gap:6px;margin-top:10px;padding-left:36px}
+    .task{font-size:11px;line-height:1.5;color:#c9d3e3;position:relative}.task:before{content:"";position:absolute;left:-12px;top:6px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+    .checklist{display:grid;gap:7px}.check{font-size:11px;color:#c5d0e0;line-height:1.45;padding-left:17px;position:relative}.check:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+    .project{padding:11px;border:1px solid #25314a;background:#101a2c;border-radius:11px;margin-bottom:8px}.project:last-child{margin-bottom:0}
+    .project b{font-size:11px}.project p{font-size:10px;color:var(--muted);margin-top:4px;line-height:1.45}
+    .gate{margin-top:18px;padding:14px;border-radius:12px;border:1px dashed #3a4b72;background:#111b30}
+    .gate strong{font-size:11px}.gate p{font-size:10px;color:var(--muted);margin-top:4px;line-height:1.5}
+    .progress{margin-top:16px}.progress-row{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:6px}
+    .track{height:8px;background:#182237;border-radius:999px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,var(--accent),#b794ff);border-radius:999px}
+    .daily{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .daily-card{padding:14px;border:1px solid var(--line);border-radius:12px;background:#0f1727}.daily-card b{font-size:11px;display:block;margin-bottom:5px}.daily-card p{font-size:10px;color:var(--muted);line-height:1.5}
+    .footer{margin-top:28px;padding:20px;text-align:center;color:var(--muted);font-size:11px}
+    @media(max-width:880px){.hero,.grid{grid-template-columns:1fr}.principles,.daily{grid-template-columns:repeat(2,1fr)}.hero-points{grid-template-columns:1fr}.wrap{padding:18px 12px 42px}}
+    @media(max-width:560px){.principles,.daily{grid-template-columns:1fr}.panel{padding:14px}.hero-card{padding:22px}h1{font-size:36px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <section class="hero">
+    <div class="hero-card">
+      <div class="eyebrow">Structured AI Engineer Path</div>
+      <h1>6 Months → AI Engineer</h1>
+      <p>One dependency-driven learning path instead of a list of technologies. Learn the prerequisite, prove it with a small build, then move to the next layer.</p>
+      <div class="hero-points">
+        <div class="hero-point"><b>Learn</b><span>Understand the concept before adding another framework.</span></div>
+        <div class="hero-point"><b>Build</b><span>Turn every major topic into code, a mini-project, or an experiment.</span></div>
+        <div class="hero-point"><b>Prove</b><span>Use projects, GitHub, deployment and interview practice as evidence.</span></div>
+      </div>
+    </div>
+    <aside class="side-card">
+      <h3>Learning dependency</h3>
+      <div class="route">
+        <div class="route-row"><div class="route-badge">01</div><div><div class="route-name">Python + Math</div><div class="route-sub">Programming fluency & ML intuition</div></div></div>
+        <div class="route-row"><div class="route-badge">02</div><div><div class="route-name">Data + SQL</div><div class="route-sub">Work with real datasets</div></div></div>
+        <div class="route-row"><div class="route-badge">03</div><div><div class="route-name">Machine Learning</div><div class="route-sub">Train, evaluate, improve</div></div></div>
+        <div class="route-row"><div class="route-badge">04</div><div><div class="route-name">Deep Learning</div><div class="route-sub">PyTorch, CNNs, NLP</div></div></div>
+        <div class="route-row"><div class="route-badge">05</div><div><div class="route-name">GenAI / LLM</div><div class="route-sub">RAG, tools, agents</div></div></div>
+        <div class="route-row"><div class="route-badge">06</div><div><div class="route-name">Deploy + Hire</div><div class="route-sub">Portfolio, DSA, interviews</div></div></div>
+      </div>
+    </aside>
+  </section>
+
+  <div class="section-title"><h2>How to use the roadmap</h2><span>Do not skip gates</span></div>
+  <section class="principles">
+    <div class="principle"><b>1. One main stack</b><p>Python → NumPy/Pandas → SQL → scikit-learn → PyTorch → Hugging Face → FastAPI → Docker.</p></div>
+    <div class="principle"><b>2. 70 / 20 / 10</b><p>70% coding + projects, 20% concepts, 10% reading/revision. Avoid tutorial-only learning.</p></div>
+    <div class="principle"><b>3. Weekly proof</b><p>Every week ends with something runnable: notebook, script, experiment, API, model or documented project.</p></div>
+    <div class="principle"><b>4. Build depth first</b><p>Do not jump to agents before you can explain data, ML training, neural networks and APIs.</p></div>
+  </section>
+
+  <div class="section-title"><h2>6-month curriculum</h2><span>Choose a month to see the exact path</span></div>
+  <div class="tabs" id="tabs"></div>
+
+  <section class="panel">
+    <div class="month-head">
+      <div>
+        <div class="month-kicker" id="kicker"></div>
+        <h2 id="title"></h2>
+        <p id="goal"></p>
+      </div>
+      <div class="badge-goal" id="milestone"></div>
+    </div>
+
+    <div class="grid">
+      <div class="box">
+        <h3>Weekly learning path</h3>
+        <div id="weeks"></div>
+      </div>
+
+      <div class="box">
+        <h3>Projects & deliverables</h3>
+        <div id="projects"></div>
+        <h4>Month exit criteria</h4>
+        <div class="checklist" id="exit"></div>
+      </div>
+    </div>
+
+    <div class="gate">
+      <strong>Gate before moving on</strong>
+      <p id="gate"></p>
+    </div>
+
+    <div class="progress">
+      <div class="progress-row"><span>Roadmap progress</span><span id="progressText"></span></div>
+      <div class="track"><div class="fill" id="progressFill"></div></div>
+    </div>
+  </section>
+
+  <div class="section-title"><h2>Weekly operating system</h2><span>Repeat every month</span></div>
+  <section class="daily">
+    <div class="daily-card"><b>Mon–Thu · Learn + code</b><p>60–90 min concepts, then 60–90 min implementation. Re-code examples without copy/paste.</p></div>
+    <div class="daily-card"><b>Friday · Review</b><p>Revisit weak concepts, write short notes, debug old code and solve 1–2 interview problems.</p></div>
+    <div class="daily-card"><b>Saturday · Project</b><p>4–6 focused hours on the current project: feature, experiment, tests, README or deployment.</p></div>
+    <div class="daily-card"><b>Sunday · Reset</b><p>Review the week, push code, update progress, plan the next 7 days and revisit one older topic.</p></div>
+  </section>
+
+  <div class="section-title"><h2>Always-on skills</h2><span>Small daily habit, not a separate subject</span></div>
+  <section class="principles">
+    <div class="principle"><b>DSA</b><p>Start with 30–45 minutes/day. Focus on arrays, strings, hash maps, two pointers, sliding window, stacks, queues, trees and basic DP.</p></div>
+    <div class="principle"><b>SQL</b><p>Keep practicing even after Month 2. Querying data is a core AI/data engineering skill.</p></div>
+    <div class="principle"><b>Git + Linux</b><p>Use branches, meaningful commits, virtual environments, shell commands and clean project structure continuously.</p></div>
+    <div class="principle"><b>Communication</b><p>Every project should be explainable in 60 seconds: problem → approach → trade-offs → result.</p></div>
+  </section>
+
+  <footer class="footer">Target outcome: a strong AI/ML portfolio with deployed projects, solid fundamentals, and interview readiness.</footer>
+</div>
+
+<script>
+const roadmap = [
+{
+  month:1,title:"Python + Math Foundations",theme:"Build the base",
+  goal:"Become comfortable writing Python without tutorials and understand the math behind common ML operations.",
+  milestone:"Foundation gate",
+  weeks:[
+    ["Week 1","Python core","Functions, scope, data structures, comprehensions, exceptions, modules, virtual environments.","Console-based data utility + clean Git repo."],
+    ["Week 2","Python engineering","OOP, decorators, generators, iterators, context managers, pathlib, JSON/CSV, logging.","Reusable Python package-style mini project."],
+    ["Week 3","NumPy + linear algebra","Arrays, broadcasting, shapes, matrix operations, dot products, vectorization, basic eigen intuition.","Matrix operations notebook implemented with NumPy."],
+    ["Week 4","Stats + calculus","Mean/variance, distributions, probability basics, derivatives, gradients, chain rule intuition.","Statistics calculator + short ML-math notes."]
+  ],
+  projects:[
+    ["Project 1","Matrix & statistics toolkit","Implement common operations with NumPy and explain the math in README."],
+    ["Project 2","Python data utility","Read CSV/JSON, validate data, log errors and produce a summary report."]
+  ],
+  exit:["Write medium-size Python scripts without following a tutorial.","Explain vectors, matrices, mean, variance and gradients at a practical level.","Use Git, venv, files, exceptions and logging confidently."]
+},
+{
+  month:2,title:"Data Handling + SQL",theme:"Work with real data",
+  goal:"Move from raw files to clean datasets, analysis and database queries.",
+  milestone:"Data gate",
+  weeks:[
+    ["Week 1","Pandas fundamentals","Series/DataFrame, indexing, filtering, groupby, merge, pivot, missing values, duplicates.","Clean and transform one messy dataset."],
+    ["Week 2","EDA + visualization","Distributions, outliers, correlations, feature types, Matplotlib/Seaborn-style analytical thinking.","EDA notebook with findings, not just plots."],
+    ["Week 3","SQL core","SELECT, WHERE, GROUP BY, HAVING, joins, subqueries, CASE, aggregates.","Solve 20–25 SQL problems."],
+    ["Week 4","SQL advanced + Python DB","CTEs, window functions, indexes conceptually, SQLAlchemy, loading/querying from Python.","SQL analytics mini dashboard or report."]
+  ],
+  projects:[
+    ["Project 1","Real-world EDA report","Choose a public dataset, clean it, analyze it and write 5–10 clear findings."],
+    ["Project 2","SQL analytics project","Create tables, write analytical queries and expose the results through Python."]
+  ],
+  exit:["Clean a messy dataset without relying on one giant notebook cell.","Write joins, CTEs and window functions.","Explain what each feature means before modeling it."]
+},
+{
+  month:3,title:"Machine Learning Core",theme:"Train → evaluate → improve",
+  goal:"Learn the complete classical ML workflow before deep learning.",
+  milestone:"ML gate",
+  weeks:[
+    ["Week 1","Supervised learning","Linear regression, logistic regression, loss functions, train/validation/test split, metrics.","Implement linear/logistic regression from scratch at least once."],
+    ["Week 2","Tree models","Decision trees, random forest, boosting, feature importance, overfitting vs underfitting.","Compare 3 models on the same dataset."],
+    ["Week 3","ML workflow","Preprocessing, pipelines, cross-validation, class imbalance, hyperparameter tuning, feature engineering.","Build a reproducible sklearn pipeline."],
+    ["Week 4","Deployment basics","Save/load models, FastAPI endpoint, validation, API testing, Docker basics.","Turn one ML model into a local API."]
+  ],
+  projects:[
+    ["Project 1","End-to-end prediction system","Data → preprocessing → model → evaluation → saved artifact."],
+    ["Project 2","Prediction API","Expose the trained model through FastAPI with a clean request/response schema."]
+  ],
+  exit:["Explain leakage, overfitting, bias/variance and evaluation metrics.","Build an sklearn pipeline from raw data to prediction.","Serve a model through a REST API."]
+},
+{
+  month:4,title:"Deep Learning + Computer Vision + NLP",theme:"Understand neural networks",
+  goal:"Build neural networks in PyTorch and understand how CNNs, embeddings and attention fit together.",
+  milestone:"DL gate",
+  weeks:[
+    ["Week 1","PyTorch foundations","Tensors, shapes, Dataset/DataLoader, nn.Module, forward pass, autograd.","Write a basic training loop from scratch."],
+    ["Week 2","Training mechanics","Loss functions, optimizers, learning rate, batch norm, dropout, regularization, checkpoints.","Train and compare two models while tracking loss/metrics."],
+    ["Week 3","CNNs + vision","Convolutions, pooling, augmentation, transfer learning, confusion matrix.","Image classifier using a real dataset."],
+    ["Week 4","NLP foundations","Tokenization, embeddings, sequence concepts, attention intuition, Hugging Face workflow.","Text classification or sentiment model."]
+  ],
+  projects:[
+    ["Project 1","Image classification","Train a PyTorch classifier, evaluate it and package inference code."],
+    ["Project 2","NLP classifier","Fine-tune or train a text classifier and publish the result with a clear model card."]
+  ],
+  exit:["Write a PyTorch training loop without copying line-by-line.","Explain forward pass, backpropagation, optimizer and regularization.","Explain why CNNs help images and what embeddings/attention provide for text."]
+},
+{
+  month:5,title:"Generative AI + RAG + Agents",theme:"Build useful AI applications",
+  goal:"Learn LLM application engineering after understanding the underlying ML/DL workflow.",
+  milestone:"GenAI gate",
+  weeks:[
+    ["Week 1","LLM application basics","Prompt design, structured outputs, model APIs, latency/cost awareness, safety basics.","Build one small LLM utility with deterministic input/output."],
+    ["Week 2","RAG fundamentals","Documents, chunking, embeddings, vector search, retrieval, context assembly, evaluation basics.","Build document Q&A over a small knowledge base."],
+    ["Week 3","Tools + workflows","Function/tool calling, structured tool inputs, retries, tracing, state and workflow design.","Add one useful tool to the RAG application."],
+    ["Week 4","Agentic patterns","ReAct-style loops, planning vs fixed workflows, memory trade-offs, failure handling.","Build a constrained agent and document its limitations."]
+  ],
+  projects:[
+    ["Project 1","Personal RAG assistant","Upload documents, retrieve relevant chunks and answer with source references."],
+    ["Project 2","Tool-using AI assistant","Give an LLM one or two tools and enforce structured outputs and error handling."]
+  ],
+  exit:["Explain the difference between prompting, RAG, fine-tuning and tool use.","Trace a query through retrieval → context → generation.","Know when a simple deterministic workflow is better than an agent."]
+},
+{
+  month:6,title:"Production + Portfolio + Interview Sprint",theme:"Turn skills into evidence",
+  goal:"Finish strong projects, deploy them, document them and prepare for AI/ML engineering interviews.",
+  milestone:"Hire-ready gate",
+  weeks:[
+    ["Week 1","Productionize","Project structure, config/env variables, logging, tests, API validation, Docker.","Containerize the strongest project."],
+    ["Week 2","Deploy + observe","Deploy a project, add health checks, basic monitoring/logging, handle failure cases.","Publish a stable live demo."],
+    ["Week 3","Portfolio + DSA","Polish 3–5 best projects, READMEs, architecture diagrams, demos; increase DSA consistency.","Complete a focused DSA set and record project explanations."],
+    ["Week 4","Interview sprint","ML fundamentals, DL fundamentals, SQL, Python, API/system design, project deep dives, mock interviews.","Run multiple timed mock interviews and fix weak areas."]
+  ],
+  projects:[
+    ["Capstone","End-to-end AI application","Frontend → FastAPI → model/LLM → database/vector store → Docker → deployed demo."],
+    ["Portfolio","3 strong projects > 10 small projects","Keep the best work: one ML, one DL/NLP/CV, one GenAI/production project."]
+  ],
+  exit:["Have 3 strong projects with GitHub, README and a live demo where practical.","Explain architecture and trade-offs without reading notes.","Solve common Python/SQL/DSA interview patterns under time pressure.","Have a resume and project pitch ready for applications."]
+}
+];
+
+let active=1;
+const tabs=document.getElementById("tabs");
+roadmap.forEach(m=>{
+  const b=document.createElement("button");
+  b.className="month-btn";
+  b.textContent=`Month ${m.month} · ${m.title.split("+")[0].trim()}`;
+  b.onclick=()=>{active=m.month;render()};
+  tabs.appendChild(b);
+});
+
+function render(){
+  const m=roadmap[active-1];
+  [...tabs.children].forEach((b,i)=>b.classList.toggle("active",i===active-1));
+  document.getElementById("kicker").textContent=`Month ${m.month} · ${m.theme}`;
+  document.getElementById("title").textContent=m.title;
+  document.getElementById("goal").textContent=`🎯 ${m.goal}`;
+  document.getElementById("milestone").textContent=m.milestone;
+
+  document.getElementById("weeks").innerHTML=m.weeks.map((w,i)=>`
+    <div class="week">
+      <div class="week-top">
+        <div class="week-num">${i+1}</div>
+        <div><div class="week-title">${w[0]} · ${w[1]}</div><div class="week-outcome">${w[3]}</div></div>
+      </div>
+      <div class="tasks">
+        ${w[2].split(", ").map(x=>`<div class="task">${x}</div>`).join("")}
+      </div>
+    </div>
+  `).join("");
+
+  document.getElementById("projects").innerHTML=m.projects.map(p=>`
+    <div class="project"><b>${p[0]} · ${p[1]}</b><p>${p[2]}</p></div>
+  `).join("");
+
+  document.getElementById("exit").innerHTML=m.exit.map(x=>`<div class="check">${x}</div>`).join("");
+  document.getElementById("gate").textContent =
+    active===1 ? "You should be able to build a Python utility from scratch and explain the basic math used by ML before starting data work." :
+    active===2 ? "You should be able to clean, query and summarize a dataset before choosing a model." :
+    active===3 ? "You should be able to take raw data through a reproducible ML pipeline and expose predictions through an API." :
+    active===4 ? "You should be able to implement and explain a PyTorch training loop and build at least one vision or NLP model." :
+    active===5 ? "You should be able to explain and build a basic RAG application before using more complex agent patterns." :
+    "You should be able to show working projects, explain decisions, deploy one application and handle common interview questions.";
+  const pct=Math.round((active/6)*100);
+  document.getElementById("progressText").textContent=`${pct}%`;
+  document.getElementById("progressFill").style.width=`${pct}%`;
+}
+render();
+</script>
+</body>
+</html>
